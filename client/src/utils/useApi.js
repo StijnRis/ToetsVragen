@@ -1,4 +1,3 @@
-import { baseApiUrl } from "../config";
 
 class ApiError extends Error {
     constructor(message) {
@@ -9,7 +8,8 @@ class ApiError extends Error {
 
 export const api = {
     get: async (url, params) => {
-        const apiUrl = new URL(url, baseApiUrl);
+        console.log(process.env);
+        const apiUrl = new URL(url, process.env.REACT_APP_BASE_API_URL);
         if (params)
             Object.keys(params).forEach((key) =>
                 apiUrl.searchParams.append(key, params[key])
@@ -29,7 +29,7 @@ export const api = {
     },
 
     post: async (url, body) => {
-        const apiUrl = new URL(url, baseApiUrl);
+        const apiUrl = new URL(url, process.env.REACT_APP_BASE_API_URL);
 
         const response = await fetch(apiUrl, {
             method: "POST",
