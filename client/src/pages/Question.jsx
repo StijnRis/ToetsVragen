@@ -15,7 +15,7 @@ export default function QuestionPage() {
     });
 
     useEffect(() => {
-        api.get("questions/" + id).then((data) => {
+        api.get("/api/questions/" + id).then((data) => {
             setQuestion(data);
         });
     }, []);

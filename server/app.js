@@ -6,8 +6,6 @@ var logger = require("morgan");
 var cors = require("cors");
 
 var indexRouter = require("./routes/index");
-var questionsRouter = require("./routes/questions");
-var examRouter = require("./routes/exams");
 
 var app = express();
 
@@ -25,11 +23,13 @@ app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
+
+// React build
+app.use(express.static(
+    path.join(__dirname,"../client/build")));
 
 app.use("/", indexRouter);
-app.use("/questions", questionsRouter);
-app.use("/exams", examRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

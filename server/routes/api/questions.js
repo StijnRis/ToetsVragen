@@ -1,13 +1,13 @@
 const express = require("express");
-const Question = require("../models/question");
+const Question = require("../../models/question");
 const router = express.Router();
 
 /**
  * Get question by id
  */
 router.get("/:id", async (req, res, next) => {
-    const {id} = req.params;
-    
+    const { id } = req.params;
+
     const result = await Question.getById(id);
 
     if (!result) {
@@ -22,8 +22,8 @@ router.get("/:id", async (req, res, next) => {
  * Get questions with filter
  */
 router.get("/", async (req, res, next) => {
-    const {text} = req.query;
-    
+    const { text } = req.query;
+
     const result = await Question.getByText(text);
 
     if (result.length == 0) {
@@ -34,4 +34,4 @@ router.get("/", async (req, res, next) => {
     res.send(result);
 });
 
-module.exports = router
+module.exports = router;

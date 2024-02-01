@@ -6,8 +6,6 @@ import Search from "../components/Search/Search";
 export default function SearchPage() {
     const [questions, setQuestions] = useState([]);
 
-    console.log(questions)
-
     return (
         <>
             <Navbar></Navbar>

@@ -2,7 +2,6 @@ import React from "react";
 import styles from "./styles.module.css";
 
 function Question(props) {
-    console.log(props)
     return (
         <a href={`questions/${props.id}`} className={styles.link}>
             <div className={styles.box}>

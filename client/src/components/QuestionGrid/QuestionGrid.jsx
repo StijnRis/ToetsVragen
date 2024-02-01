@@ -3,7 +3,6 @@ import styles from "./styles.module.css";
 import Question from "../Question/Question";
 
 function QuestionGrid(props) {
-    console.log(props)
     return (
         <div className={styles.questionGrid}>
             {props.questions.map((question) => (

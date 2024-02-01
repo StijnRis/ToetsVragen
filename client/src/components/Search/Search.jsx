@@ -8,7 +8,7 @@ function Search(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
 
-        api.get("/questions/", { text: query }).then((data) => {
+        api.get("/api/questions/", { text: query }).then((data) => {
             props.onSearch(data);
         });
     };

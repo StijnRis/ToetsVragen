@@ -12,7 +12,6 @@ module.exports = {
 
     getByText: (text) => {
         return new Promise((resolve, reject) => {
-            console.log(text)
             db.all("SELECT * FROM question WHERE question LIKE $1 OR context LIKE $1 LIMIT 30", ["%"+text+"%"], async (err, row) => {
                 if (err) reject(err);
                 resolve(row);

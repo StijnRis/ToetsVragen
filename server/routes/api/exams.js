@@ -1,14 +1,14 @@
 const express = require("express");
-const Question = require("../models/question");
-const Exam = require("../models/exam");
+const Question = require("../../models/question");
+const Exam = require("../../models/exam");
 const router = express.Router();
 
 /**
  * Get exam by id
  */
 router.get("/:id", async (req, res, next) => {
-    const {id} = req.params;
-    
+    const { id } = req.params;
+
     const result = await Exam.getById(id);
 
     if (!result) {
@@ -19,4 +19,4 @@ router.get("/:id", async (req, res, next) => {
     res.send(result);
 });
 
-module.exports = router
+module.exports = router;
