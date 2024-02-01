@@ -1,0 +1,16 @@
+.box {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px;
+}
+
+.bar {
+    padding: 10px;
+    width: 90%;
+    max-width: 600px;
+}
+
+.submit {
+
+}
