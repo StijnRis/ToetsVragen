@@ -1,7 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SearchPage from "./pages/Search";
 import HomePage from "./pages/Home";
-import QuestionPage from "./pages/Question";
+import QuestionPage from "./pages/question/Question";
 
 export default function App() {
     return (

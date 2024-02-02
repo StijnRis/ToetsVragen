@@ -1,0 +1,11 @@
+.pdfContainer {
+    display: flex;
+    align-content: center;
+}
+
+.pdf {
+    max-width: 1000px;
+    width: 80%;
+    margin: auto auto;
+    height: 90vh;
+}

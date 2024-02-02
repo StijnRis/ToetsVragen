@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import Navbar from "../components/NavBar/NavBar";
-import { api } from "../utils/useApi";
+import Navbar from "../../components/NavBar/NavBar";
+import { api } from "../../utils/useApi";
+import styles from "./styles.module.css";
 
 export default function QuestionPage() {
     const { id } = useParams();
@@ -51,19 +52,20 @@ export default function QuestionPage() {
                     Vraag {question.question_number} op pagina{" "}
                     {question.exam_page_number}
                 </p>
-                <object
-                    type="application/pdf"
-                    data={
-                        new URL(
-                            exam.file_path,
-                            process.env.REACT_APP_BASE_API_URL
-                        ) +
-                        "#page=" +
-                        question.exam_page_number
-                    }
-                    width="600"
-                    height="700"
-                ></object>
+                <div className={styles.pdfContainer}>
+                    <object
+                        className={styles.pdf}
+                        type="application/pdf"
+                        data={
+                            new URL(
+                                exam.file_path,
+                                process.env.REACT_APP_BASE_API_URL
+                            ) +
+                            "#page=" +
+                            question.exam_page_number
+                        }
+                    ></object>
+                </div>
                 <p>{question.question}</p>
             </main>
         </>

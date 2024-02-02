@@ -25,15 +25,17 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, "public")));
 
-// PDF
-app.use("/data", express.static(
-    path.join(__dirname, "data")));
+// PDF pages
+app.use("/data", express.static(path.join(__dirname, "data")));
 
-// React build
-app.use(express.static(
-    path.join(__dirname,"../client/build")));
-
+// Express pages
 app.use("/", indexRouter);
+
+// React pages in build
+app.use(express.static(path.join(__dirname, "../client/build")));
+app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

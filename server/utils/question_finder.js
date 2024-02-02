@@ -30,7 +30,7 @@ async function extractText(pdfjsLib, pdfPath) {
                 text += "\n";
             }
         }
-        text += `\n {{webpage ${currentPage}}}`;
+        text += `\n {{webpage ${currentPage + 1}}}`;
     }
     return text;
 }
