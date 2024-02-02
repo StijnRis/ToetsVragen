@@ -8,7 +8,6 @@ class ApiError extends Error {
 
 export const api = {
     get: async (url, params) => {
-        console.log(process.env);
         const apiUrl = new URL(url, process.env.REACT_APP_BASE_API_URL);
         if (params)
             Object.keys(params).forEach((key) =>

@@ -25,6 +25,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 // app.use(express.static(path.join(__dirname, "public")));
 
+// PDF
+app.use("/data", express.static(
+    path.join(__dirname, "data")));
+
 // React build
 app.use(express.static(
     path.join(__dirname,"../client/build")));
