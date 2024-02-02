@@ -4,7 +4,7 @@ module.exports.Exam = {
     save: (url, level, year, version, filePath) => {
         return new Promise((resolve, reject) => {
             db.all(
-                "INSERT INTO exam (url, level, year, version) VALUES ($1, $2, $3, $4, $5)",
+                "INSERT INTO exam (url, level, year, version, file_path) VALUES ($1, $2, $3, $4, $5)",
                 [url, level, year, version, filePath],
                 async (err, row) => {
                     if (err) reject(err);

@@ -5,9 +5,9 @@ const { Exam } = require("../models/exam");
 const https = require("https");
 
 async function findExams() {
-    const folder ="../data";
+    const folder = "./data";
     await Exam.removeAll();
-    await clearFolder(folder);
+    // await clearFolder(folder);
     await findAndDownloadAllNvonExams(folder);
 }
 
@@ -57,35 +57,24 @@ async function findAndDownloadAllNvonExams(folder) {
                 const url = urlItem.url.replace("{name}", yearId);
                 const level = urlItem.level;
                 const subject = urlItem.subject;
-                const file = `${subject}-${level}-${year}-${version}.pdf`;
-                const filePath = path.join(folder, file);
+                const fileName = `${subject}-${level}-${year}-${version}.pdf`;
+                const filePath = folder + "/" + fileName;
 
-                console.log(`Downloading ${url} to ${file}`);
+                console.log(`Downloading ${url} to ${filePath}`);
 
-                try {
-                    const file = fs.createWriteStream(filePath);
-                    const request = https.get(url, function (response) {
+                const request = https.get(url, async function (response) {
+                    if (response.statusCode === 200) {
+                        const file = fs.createWriteStream(filePath);
                         response.pipe(file);
                         file.on("finish", () => {
                             file.close();
-                            console.log("Download Completed");
+                            console.log(`Download completed at ${url}`);
                         });
-                    });
-                    // const response = await axios.get(url, {
-                    //     responseType: "arraybuffer",
-                    // });
-
-                    // if (response.status === 404) {
-                    //     console.log("PDF was not found");
-                    //     continue;
-                    // }
-
-                    // fs.writeFileSync(filePath, response.data);
-
-                    await Exam.save(url, level, year, version, filePath);
-                } catch (error) {
-                    console.error(`Error downloading file: ${error}`);
-                }
+                        await Exam.save(url, level, year, version, filePath);
+                    } else {
+                        console.log(`No exam found at ${url}`)
+                    }
+                });
             }
         }
     }

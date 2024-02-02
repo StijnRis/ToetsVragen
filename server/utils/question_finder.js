@@ -3,16 +3,15 @@ const { Question } = require("../models/question");
 
 async function findQuestions() {
     await Question.removeAll();
+    const pdfjsLib = await import("pdfjs-dist");
     const exams = await Exam.getAll();
     for (const exam of exams) {
-        await findQuestionsInExam(exam);
+        await findQuestionsInExam(pdfjsLib, exam);
     }
 }
 
-async function findQuestionsInExam(exam) {
-    console.log("Checking exam " + exam.id);
-    console.log(exam);
-    const pdfjsLib = await import("pdfjs-dist");
+async function findQuestionsInExam(pdfjsLib, exam) {
+    console.log(`Checking exam ${exam.id}`);
     const text = await extractText(pdfjsLib, exam.file_path);
     const questions = findQuestionsInText(exam.id, text);
     await saveQuestions(questions);
@@ -62,7 +61,6 @@ function findQuestionsInText(examId, text) {
 
 async function saveQuestions(questions) {
     for (const questionData of questions) {
-        console.log(questionData);
         await Question.save(
             questionData.examId,
             questionData.examPageNumber,
