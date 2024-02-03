@@ -41,13 +41,10 @@ export default function QuestionPage() {
         <>
             <Navbar></Navbar>
             <main>
-                <h1>Vraag</h1>
-                <p>
+                <h1 className={styles.title}>Vraag {question.question_number} op pagina{" "}
+                    {question.exam_page_number}</h1>
+                <p className={styles.subTitle}>
                     {exam.level}, {exam.year} versie {exam.version}
-                </p>
-                <p>
-                    Vraag {question.question_number} op pagina{" "}
-                    {question.exam_page_number}
                 </p>
                 <div className={styles.pdfContainer}>
                     <object
@@ -63,7 +60,10 @@ export default function QuestionPage() {
                         }
                     ></object>
                 </div>
+                <h2>Onze data</h2>
+                <h3>Context</h3>
                 <p>{question.context}</p>
+                <h3>Vraag</h3>
                 <p>{question.question}</p>
             </main>
         </>

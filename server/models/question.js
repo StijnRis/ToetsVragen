@@ -30,7 +30,7 @@ module.exports.Question = {
     getByText: (text) => {
         return new Promise((resolve, reject) => {
             db.all(
-                "SELECT * FROM question WHERE question LIKE $1 OR context LIKE $1 LIMIT 30",
+                "SELECT * FROM question WHERE question LIKE $1 OR context LIKE $1 ORDER BY RANDOM() LIMIT 30",
                 ["%" + text + "%"],
                 async (err, row) => {
                     if (err) reject(err);

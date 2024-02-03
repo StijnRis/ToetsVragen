@@ -25,7 +25,7 @@ module.exports.Exam = {
 
     getAll: () => {
         return new Promise((resolve, reject) => {
-            db.all("SELECT * FROM exam", [], async (err, row) => {
+            db.all("SELECT * FROM exam ORDER BY RANDOM()", [], async (err, row) => {
                 if (err) reject(err);
                 resolve(row);
             });

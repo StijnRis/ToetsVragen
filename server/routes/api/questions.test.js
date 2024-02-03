@@ -7,17 +7,16 @@ describe("Questions endpoints", () => {
         expect(response.statusCode).toBe(200);
         const data = JSON.parse(response.text);
         expect(Array.isArray(data)).toBe(true);
-        data.forEach(element => {
+        data.forEach((element) => {
             expect(element).toEqual(
                 expect.objectContaining({
                     id: expect.any(Number),
-                    url: expect.any(String),
-                    level: expect.any(String),
-                    id: expect.any(Number),
-                    version: expect.any(Number),
-                    file_path: expect.any(String),
+                    exam_id: expect.any(Number),
+                    exam_page_number: expect.any(Number),
+                    question: expect.any(String),
+                    context: expect.any(String),
                 })
-            )
+            );
         });
     });
 
@@ -28,11 +27,10 @@ describe("Questions endpoints", () => {
         expect(data).toEqual(
             expect.objectContaining({
                 id: expect.any(Number),
-                url: expect.any(String),
-                level: expect.any(String),
-                id: expect.any(Number),
-                version: expect.any(Number),
-                file_path: expect.any(String),
+                exam_id: expect.any(Number),
+                exam_page_number: expect.any(Number),
+                question: expect.any(String),
+                context: expect.any(String),
             })
         );
     });

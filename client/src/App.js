@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import SearchPage from "./pages/Search";
+import SearchPage from "./pages/search/Search";
 import HomePage from "./pages/home/Home";
 import QuestionPage from "./pages/question/Question";
 

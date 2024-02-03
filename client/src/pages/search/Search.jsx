@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Navbar from "../components/NavBar/NavBar";
-import QuestionGrid from "../components/QuestionGrid/QuestionGrid";
-import Search from "../components/Search/Search";
-import { api } from "../utils/useApi";
+import Navbar from "../../components/NavBar/NavBar";
+import QuestionGrid from "../../components/QuestionGrid/QuestionGrid";
+import Search from "../../components/Search/Search";
+import { api } from "../../utils/useApi";
+import styles from "./styles.module.css";
 
 export default function SearchPage(props) {
     const { text } = useParams();
@@ -25,7 +26,7 @@ export default function SearchPage(props) {
         <>
             <Navbar></Navbar>
             <main>
-                <h1 id="title">Search</h1>
+                <h1 id={styles.title}>Search</h1>
                 <div className="layout">
                     <Search onSearch={search} />
                 </div>

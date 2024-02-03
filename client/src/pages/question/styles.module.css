@@ -1,3 +1,11 @@
+.title {
+    text-align: center;
+}
+
+.subTitle {
+    text-align: center;
+}
+
 .pdfContainer {
     display: flex;
     align-content: center;
