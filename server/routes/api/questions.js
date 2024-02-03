@@ -26,11 +26,6 @@ router.get("/", async (req, res, next) => {
 
     const result = await Question.getByText(text);
 
-    if (result.length == 0) {
-        res.status(404).json({ error: "No questions found." });
-        return;
-    }
-
     res.send(result);
 });
 
