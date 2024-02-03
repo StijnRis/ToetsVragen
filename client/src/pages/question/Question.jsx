@@ -37,9 +37,6 @@ export default function QuestionPage() {
         }
     }, [question.exam_id]);
 
-    console.log(question);
-    console.log(exam);
-
     return (
         <>
             <Navbar></Navbar>
@@ -66,6 +63,7 @@ export default function QuestionPage() {
                         }
                     ></object>
                 </div>
+                <p>{question.context}</p>
                 <p>{question.question}</p>
             </main>
         </>

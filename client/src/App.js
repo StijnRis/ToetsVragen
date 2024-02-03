@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import SearchPage from "./pages/Search";
-import HomePage from "./pages/Home";
+import HomePage from "./pages/home/Home";
 import QuestionPage from "./pages/question/Question";
 
 export default function App() {
@@ -10,6 +10,7 @@ export default function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/questions/:id" element={<QuestionPage />} />
                 <Route path="/search" element={<SearchPage />} />
+                <Route path="/search/:text" element={<SearchPage />} />
             </Routes>
         </BrowserRouter>
     );

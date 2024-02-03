@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { api } from "../../utils/useApi";
 import styles from "./styles.module.css";
 
 function Search(props) {
@@ -7,10 +6,7 @@ function Search(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
-        api.get("/api/questions/", { text: query }).then((data) => {
-            props.onSearch(data);
-        });
+        props.onSearch("/search/"+query);
     };
 
     return (

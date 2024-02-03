@@ -1,6 +1,6 @@
 import React from "react";
-import styles from "./Home.module.css";
-import Navbar from "../components/NavBar/NavBar";
+import styles from "./styles.module.css";
+import Navbar from "../../components/NavBar/NavBar";
 
 export default function HomePage() {
     return (

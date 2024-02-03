@@ -1,7 +1,33 @@
-.questionGrid {
+.gridContainer {
+    display: flex;
+    justify-content: center;
+}
+
+.grid {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: stretch;
     gap: 10px;
     margin: 10px;
+}
+
+.box {
+    max-width: 800px;
+    width: 100%;
+    background-color: rgba(128, 128, 128, 0.459);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.question {
+    font-weight: normal;
+    font-size: 24;
+}
+
+.info {
+}
+
+.link {
+    text-decoration: none;
+    color: black;
 }
